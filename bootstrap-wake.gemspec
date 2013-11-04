@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = Wake::VERSION
   s.authors     = ["rndrfero"]
   s.email       = ["frantisek.psotka@stylez.sk"]
-  s.homepage    = "https://github.com/rndrfero/wake"
+  s.homepage    = "https://github.com/rndrfero/bootstrap-wake"
   s.summary     = "Convention-over-configuration extension for Rails. Rapid prototyping THE FINAL application. Opposite to scaffolding."
   s.description = "Convention-over-configuration extension for Rails. Rapid prototyping THE FINAL application. Opposite to scaffolding."
 
@@ -18,8 +18,4 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails", "~> 3.2"
   s.add_dependency "kaminari", '0.13.0'
-  
-  # s.add_dependency "jquery-rails"
-
-  # s.add_development_dependency "sqlite3"
 end
