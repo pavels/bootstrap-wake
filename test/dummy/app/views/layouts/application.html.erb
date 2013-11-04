@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dummy</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+
+	<%= stylesheet_link_tag "wake/application.css" %>
+	<%= stylesheet_link_tag "wake/themes/default.css" %>
+  <%= javascript_include_tag "wake/application" %>
+</head>
+<body>
+	<div class="island">
+		<div class="note">This is menu in Dummy layout.</div>		
+		<h3>Wake convention-over-configuration Rails extension - Dummy App</h3>
+		<%= link_to 'Table (ThingsController)', things_path %>
+		&nbsp;&nbsp;
+		<%= link_to 'Table+AJAX (PiecesController)', pieces_path %>
+		&nbsp;&nbsp;
+		<%= link_to 'Relative Gallery (ModalThingsController)', modal_things_path %>
+		&nbsp;&nbsp;
+		<%= link_to 'Fixed Gallery (ModalPiecesController)', modal_pieces_path %>
+	</div>
+
+	<div class="island">
+		<div class="note" onclick="$('#Flash').effect('highlight', {color: '#74be29' }, 1500);">
+			This is /wake/flash.html.erb - click me to test highlighting.
+		</div>
+		
+		<%= render :partial=>'/wake/flash', :object=>flash %>		
+	</div>
+	
+		
+	<div id="InnerWrapper">
+		<%= yield %>
+	</div>
+
+</body>
+</html>

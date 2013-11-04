@@ -1,0 +1,19 @@
+<%
+   not_found = false
+   not_found = @items.blank? if params[:search]
+%>
+
+<div class="well">
+	<% if @items.total_count == 0 %>
+	  empty
+	<% else %>
+		<%= @items.offset_value + 1 %>..<%= @items.offset_value + @items.length %>  <%= "wake.of".tt %> <%= @items.total_count %>
+	<% end %>
+		
+	<form action="<%= url_for %>" method="get" class="form-search pull-right">
+		<div class="control-group <%= not_found ? "error" : (@wake_params[:search].blank? ? "" : "success") %>">
+			<input name="wake[search]" value="<%= @wake_params[:search] %>" type="text" class="input-medium search-query">
+		  	<button type="submit" class="btn"><%= "wake.search".tt %></button>
+	  	</div>
+	</form>
+</div>

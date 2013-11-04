@@ -1,0 +1,63 @@
+<%
+	header ||= false
+	item = piece_list_item unless header
+%>
+
+<% if header %>
+
+	<tr>
+		 <th style="" class=""> <%= wake_click_order_by 'id' %> </th>
+		 <th style="" class=""> <%= wake_click_order_by 'str' %> </th>
+		 <th style="" class=""> <%= wake_click_order_by 'int' %> </th>
+		 <th style=""> </th>
+	</tr>
+
+	<tr>
+		<td colspan="8" class="inside">
+		
+			<% if @item and @item.new_record? %>	
+				<div id="<%=dom_id @item %>-form" class="form-container" style="">
+					<%= render :partial=>"#{controller._ident}_inline_form" %>
+				</div>
+			<% else %>
+				<div id="<%=dom_id controller._model.new %>-form" class="form-container" style="display: none;"> </div>
+			<% end %>
+		
+		</td>
+	</tr>
+
+
+<% else %>
+
+	<tr id="<%=dom_id item %>" class="hover-parent hilite pointer">
+			
+			<td <%=wor item %> class="lo-visible"> <%=whl item.id %> </td>				
+			<td <%=wor item %> class="lo-visible"> <%=whl item.str %> </td>				
+			<td <%=wor item %> class="hi-visible"> <%=whl item.int %> </td>				
+			
+			<td class="hover-child right"> 			
+			    <%= wake_button_destroy item %>
+			</td>
+	</tr>
+
+	<tr id="<%=dom_id item %>-inside">
+		<td colspan="8" class="inside" style="border: none;">
+			<div id="<%=dom_id item %>-form" class="form-container" style="">
+				<%= render :partial=>"#{controller._ident}_inline_form" if @item and item.id == @item.id %>
+			</div>
+		</td>
+	</tr>
+	
+	<!-- 
+	<% if @item and item.id == @item.id %>
+		<div id="<%=dom_id item %>-form" class="form-container" style="">
+			<%#= render :partial=>"#{controller._ident}_inline_form" %>
+		</div>
+	<% else %>	
+		<div id="<%=dom_id item %>-form" class="form-container" style="display: none;"></div>
+	<% end %> -->
+
+
+<% end %>
+
+

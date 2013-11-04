@@ -1,0 +1,33 @@
+<% 
+	choices = filter_range 
+	raise 'ARRAY EXPECTED' unless choices.is_a? Array
+%>
+
+
+<%= form_tag({:action=>'index'}, :method=>:get, :class=>'inline') do %>
+
+	<% if choices.size == 1 %>
+	  <%= hidden_field_tag 'wake[filter_range][key]', choices.first.last %>
+	  <small><%= choices.first.first%>:</small>
+	<% else %>
+  		<%= select 'wake[filter_range]', 'key', choices, {:selected=>(@wake_params[:filter_range]||{})[:key] } %> : 
+	<% end %>
+
+	<%= hidden_field_tag 'wake[order]', @wake_params[:order] %>
+	<%= hidden_field_tag 'wake[search]', @wake_params[:search] %>
+	<% for k,v in @wake_params[:filter] %>
+		<%= hidden_field_tag "wake[filter][#{k}]", v %>
+	<% end %>
+
+	<%= text_field_tag 'wake[filter_range][from]', (@wake_params[:filter_range]||{})[:from], 
+	  :size=>9, :class=>((@wake_params[:filter_range]||{})[:from_error] ? 'field_with_errors' : '') %>
+	
+	&rarr;
+	
+	<%= text_field_tag 'wake[filter_range][until]', (@wake_params[:filter_range]||{})[:until], 
+	  :size=>9, :class=>((@wake_params[:filter_range]||{})[:until_error] ? 'field_with_errors' : '') %>
+	
+	
+	<%= submit_tag 'Filter!' %>
+		
+<% end %>

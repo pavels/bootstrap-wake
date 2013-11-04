@@ -1,0 +1,41 @@
+<div class="note">This is piece_list.html.erb</div>
+
+<br />
+
+<%= link_to 'Create new Piece', new_piece_path, :remote=>true %>
+
+<br /><br />
+
+<table class="wakeThemeList" style="">
+	<tr>
+		<td class="left" colspan="100" style="border: none;">
+			<%= render :partial=>'/wake/list_header' %>
+		</td>
+	</tr>
+	
+	<tr><td colspan="8" style="height: 4px; border: none;"></td></td>
+	<tr><td colspan="8" style="height: 4px; "></td></td>
+		
+	<tr>
+		<td class="center" colspan="100" style="border: none;"> 
+			<%#= render :partial=>'employee_filter' %>
+		</td>
+	</tr>
+	
+
+	<tr><td colspan="8" style="height: 4px; border: none;"></td></td>
+			
+	<%= render :partial=>'piece_list_item', :locals=>{:header=>true} %>
+
+	<tr><td colspan="8" style="height: 4px;"></td></tr>
+
+	<%= render :partial=>'piece_list_item', :collection=>@items %>	
+
+	<tr><td colspan="8" style="height: 6px;"></td></tr>
+
+	<tr><td class="center" colspan="6"> <%= paginate @items %> </td> </tr>
+
+</table>
+
+	
+	

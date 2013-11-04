@@ -1,0 +1,90 @@
+/* General.css for Rails 3.2 */
+
+.testclass { color: green; }
+.b { font-weight: bold; }
+.i { font-style: italic; }
+
+.red { color: red; }
+.blue { color: blue; }
+.green { color: green; }
+.black { color: black; }
+.byellow { background-color: yellow; }
+
+.type {
+	font-family: Courier New, Courier, monotype;
+}
+
+.move { cursor: Move; }
+.pointer { cursor: Pointer; }
+
+.none {
+	display: none;
+}
+.inline {
+	display: inline;
+}
+.block {
+	display: block;
+}
+
+.left {
+	text-align: left !important;
+}
+.right {
+	text-align: right !important;
+}
+.center {
+	text-align: center !important;
+}
+.top { vertical-align: top; }
+.bottom { vertical-align: bottom; }
+
+.fleft {
+	float: left;
+}
+.fright {
+	float: right;
+}
+.clear {
+	clear: both;
+}
+.relative {
+	position: relative;
+}
+.absolute {
+	position: absolute;
+}
+
+.em120 {
+	font-size : 1.2em;
+}
+.em110 {
+	font-size : 1.1em;
+}
+.em90 {
+	font-size: 0.9em;
+}
+.em80 {
+	font-size: 0.8em;
+}
+.em70 {
+	font-size: 0.8em;
+}
+.cssreset * p, .cssreset p {
+	line-height: 1.05em;
+	text-indent: 0px;
+}
+.mauto { margin: auto; }
+.nopadding { padding: 0px !important; }
+.nomargin { margin: 0px !important; }
+.pre { white-space: pre; }
+.nowrap{ white-space: nowrap; }
+.noborder { border: none;}
+
+.help { cursor: help; }
+
+.w100 { width: 100%; }
+
+.dnone { display: none; }
+
+.noshadow { box-shadow: none !important; -moz-box-shadow: none !important; -webkit-box-shadow: none !important; }

@@ -1,0 +1,8 @@
+<% dom_id = dom_id(@item)+'-form' %>
+
+$('#<%= dom_id %>').html("<%=escape_javascript render :partial=>"#{controller._ident}_inline_form" %>");
+
+$('.form-container:visible').not('#<%= dom_id %>').hide("blind", { direction: "vertical" }, 500);
+$('#<%= dom_id %>:hidden').show("blind", { direction: "vertical" }, 500);
+
+<%= render :partial=>'/wake/flash', :object=>flash %>

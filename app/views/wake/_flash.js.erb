@@ -1,0 +1,24 @@
+<%
+  flash_msg = flash[:error]||flash[:hilite]||flash[:notice]
+	flash_color = if flash[:error]
+	 	'#FF0000'
+    elsif flash[:hilite]
+	 	'#74be29'
+	else
+		nil
+	end			
+%>
+
+<% if flash_msg %>
+	$('#Flash').html('<%=escape_javascript flash_msg.tt %>');
+<% end %>
+
+
+<% if flash_color %>
+	$('#Flash').effect('highlight', {color: '<%=flash_color%>' }, 1500);	
+<% end %>
+
+
+<% if @item and flash_color %>
+	$('#<%=dom_id @item %>').effect('highlight', {color: '<%=flash_color%>' }, 1500);
+<% end %>

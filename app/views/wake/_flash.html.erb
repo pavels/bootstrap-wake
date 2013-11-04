@@ -1,0 +1,22 @@
+<%
+		flash_color = if flash[:error]
+		 	'#FF0000'
+	  elsif flash[:hilite]
+		 	'#74be29'
+		else
+			nil
+		end			
+%>
+
+<% if flash_color %>
+	<script>
+		$(document).ready(function() {
+			$('#Flash').effect('highlight', {color: '<%= flash_color %>' }, 1500);
+		});
+	</script>
+<% end %>
+
+<div id="Flash" class="flash">
+	<% msg = flash[:error]||flash[:hilite]||flash[:notice] %> 
+	<%= msg.tt if msg %>			
+</div>

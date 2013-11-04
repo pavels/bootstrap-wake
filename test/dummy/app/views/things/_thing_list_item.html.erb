@@ -1,0 +1,29 @@
+<%
+	header ||= false
+	item = thing_list_item unless header
+%>
+
+<% if header %>
+
+	<tr>
+		 <th style="width: 1em;" class=""> <%= wake_click_order_by 'id' %> </th>
+		 <th style="width: 12em;" class=""> <%= wake_click_order_by 'str' %> </th>
+		 <th style="width: 12em;" class=""> <%= wake_click_order_by 'int' %> </th>
+		 <th style="width: 1em;"> </th>
+	</tr>
+
+<% else %>
+
+	<tr id="<%= dom_id item %>" class="hover-parent hilite pointer">
+			
+			<td <%=wo item %> class="lo-visible"> <%=whl item.id %> </td>				
+			<td <%=wo item %> class=""> <%=whl item.str %> </td>
+			<td <%=wo item %> class=""> <%=whl item.int %> </td>				
+			
+			<td class="hover-child right"> 			
+			    <%= wake_button_destroy item %>
+			</td>
+	</tr>
+
+<% end %>
+

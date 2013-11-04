@@ -1,0 +1,20 @@
+<div class="note">This is things_form.html.erb</div>
+
+<% url = @item.new_record? ? {:action=>"create"} : {:action=>"update",:id=>@item.id } %>
+
+<%= form_for @item, :url=>url do |f| %>
+
+	<%= submit_tag %> preorbit na f.submit <br /><br />
+
+	<table class="wakeThemeForm" class="">
+		<tr>
+			<th> String: </th>
+			<td> <%= f.text_field 'str', :class=>'' %>  <%=wfe :str %></td>
+		</tr>
+		<tr>
+			<th> Integer: </th>
+			<td> <%= f.text_field 'int', :class=>'' %>  </td>
+		</tr>
+	</table>
+		
+<% end %>

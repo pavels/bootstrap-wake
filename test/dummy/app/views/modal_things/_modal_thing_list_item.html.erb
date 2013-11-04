@@ -1,0 +1,15 @@
+<% item = modal_thing_list_item %>
+
+<div id="<%=dom_id item%>" class="galleryItem">
+	
+	str: <b><%= item.str %></b><br/>
+	int: <b><%= item.int %></b><br/>
+	<br/>	
+	<%= link_to 'EDIT', edit_modal_thing_path(item), :remote=>true %>
+
+	<div id="<%=dom_id item%>-inside" class="">
+		<div id="<%=dom_id item%>-form"  class="form-container"></div>
+	</div>
+	
+</div>
+

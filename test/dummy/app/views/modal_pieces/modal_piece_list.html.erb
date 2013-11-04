@@ -1,0 +1,29 @@
+<div class="note">This is modal_piece_list.html.erb</div>
+
+<br />
+
+<%= link_to 'Create new Piece', new_modal_piece_path, :remote=>true %>
+
+<br /><br />
+
+<h3>Fixed Form</h3>
+
+
+<div id="<%=dom_id controller._model.new%>-form"  class="form-container"></div>
+
+
+<% for item in @items%>
+	<div id="<%=dom_id item%>-form"  class="form-container">
+		<% if @item and @item.id == item.id %>
+		  <%= render :partial=>'modal_piece_inline_form', :object=>@item %>
+		<% end %>
+	</div>
+<% end %>
+
+
+
+<h3>List</h3>
+
+<div class="wakeThemeList">	
+	<%= render :partial=>'modal_piece_list_item', :collection=>@items %>
+</div>

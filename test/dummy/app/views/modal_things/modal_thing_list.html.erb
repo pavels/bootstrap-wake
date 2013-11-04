@@ -1,0 +1,17 @@
+<div class="note">This is modal_thing_list.html.erb</div>
+
+<br />
+
+<%= link_to 'Create new Thing', new_modal_thing_path, :remote=>true %>
+
+<br /><br />
+
+<div class="wakeThemeList">
+
+	<div id="inside" class="">
+		<div id="<%=dom_id controller._model.new%>-form"  class="form-container"></div>
+	</div>
+	
+	<%= render :partial=>'modal_thing_list_item', :collection=>@items %>
+
+</div>
