@@ -1,22 +1,26 @@
 <%
-		flash_color = if flash[:error]
-		 	'#FF0000'
-	  elsif flash[:hilite]
-		 	'#74be29'
+		hilite_color = nil
+		div_class = nil
+		
+		if flash[:error]
+		 	hilite_color = '#FF0000'
+		 	div_class    = 'alert-danger'
+	    elsif flash[:success]
+		 	hilite_color = '#74be29'
+		 	div_class    = 'alert-success'
+		elsif flash[:info]
 		else
-			nil
 		end			
 %>
 
-<% if flash_color %>
+<div id="Flash" class="alert <%= div_class %> <%= 'empty' if flash.empty? %>">
+	<%= flash[:error]||flash[:success]||flash[:info] %><%#= Time.now %>
+</div>
+
+<% if hilite_color %>
 	<script>
 		$(document).ready(function() {
-			$('#Flash').effect('highlight', {color: '<%= flash_color %>' }, 1500);
+			$('#Flash').effect('highlight', {color: '<%= hilite_color %>' }, 1500);
 		});
 	</script>
 <% end %>
-
-<div id="Flash" class="flash">
-	<% msg = flash[:error]||flash[:hilite]||flash[:notice] %> 
-	<%= msg.tt if msg %>			
-</div>

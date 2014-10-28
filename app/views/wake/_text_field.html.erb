@@ -1,0 +1,9 @@
+
+<div class="form-group <%= 'has-error' unless @item.errors[attribute].blank? %>">
+	<label for="" class="col-lg-2 control-label">
+		<%= nice_split attribute.to_s %> <%= @item.errors[attribute].first %>: 
+	</label>
+	<div class="col-lg-8">
+		<%= form_helper.text_field attribute, :class=>'form-control', :type=>'text' %>
+	</div>
+</div>

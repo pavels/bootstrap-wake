@@ -1,0 +1,18 @@
+<%
+	merge ||= nil
+	reject ||= nil
+
+	attrs = @item.attributes.select{ |k,v| @item.class.accessible_attributes.include? k }
+	attrs.reject! { |x| reject.include? x } if reject
+	attrs.merge! merge if merge
+%>
+
+<% if not @item.new_record? %>
+
+	<%= link_to ico('plus-sign'), {:action=>'new'}, class: 'btn btn-primary ', title: 'Create new' %>
+
+	<% the_url = url_for action: :new, @item.class.to_s.underscore => attrs %>
+
+	<%= link_to raw("#{ico('arrow-right')} #{ico('plus-sign')}"), the_url, class: 'btn btn-primary', title: 'Duplicate' %>
+
+<% end %>
