@@ -19,7 +19,7 @@ module WakeHelper
 	end
 
 	def wake_filter_input(col_name)
-		raw "<input id=\"Filter_#{col_name}\" name=\"wake[filter][#{col_name}]\" 
+		raw "<input id=\"WakeFilter-#{col_name}\" name=\"wake[filter][#{col_name}]\" 
 			value=\"#{@wake_params[:filter][col_name]}\" 
 			class=\"wake_filter_input form-control input-xsm\">"
 		#		 style="display: inline; width: 100%;"

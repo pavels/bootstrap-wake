@@ -306,12 +306,7 @@ module Wake
       end  
     end
   
-    # paginate @items
     def wake_list
-#      raise "#{self.class.send 'const_get', 'Elastic::Site'}"
-#      raise "#{instance_eval "Elastic::Site"}"
-#      raise "pizdo: #{Elastic.const_get "Site"}"
-#      raise "pizdo: #{Elastic.const_get "Site"}"
       @items ||= _model
       @items = @items.joins _model.wake_joins if _model.respond_to? :wake_joins
       @items = @items.where wake_constraints if wake_constraints
@@ -425,7 +420,8 @@ module Wake
       # kaminari      
       @items_total_count_hack = @items.count if @items_total_count_hack
       @items.instance_variable_set :@total_count, @items_total_count_hack
-      
+
+
       begin
         @items = @items.page(@wake_params[:page]).per(@wake_params[:per]||Defaults::PER_PAGE)
         just_to_force_the_select_itself = @items.all
