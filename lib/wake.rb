@@ -176,7 +176,15 @@ module Wake
   
     def update
       begin
-        params[_model_sym].each{ |k,v| @item.send("#{k}=", v) }
+        params[_model_sym].each do |k,v|
+          if v.kind_of? ActionDispatch::Http::UploadedFile
+            data = File.read(v.tempfile.to_path.to_s)
+            data.force_encoding "ASCII-8BIT"
+            @item.send("#{k}=", data)
+          else
+            @item.send("#{k}=", v)
+          end
+        end
         @item.attributes = wake_constraints if wake_constraints
         ret = @item.save
       rescue Exception => @exception
