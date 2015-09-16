@@ -1,7 +1,7 @@
 module WakeHelper
 
 	def ico(html_class)
-		raw "<span class=\"glyphicon glyphicon-#{html_class}\"></span>"
+		raw "<span class=\"fa fa-#{html_class}\"></span>"
 	end
 
 	def wake_sort_params(col_name)
@@ -67,7 +67,7 @@ module WakeHelper
 	end
 
 	def wake_list_destroy_multiple_submit
-		ret = raw link_to ico('trash'), "#", onclick: "$('#DestroyConfirmation').val('destroy'); $('#TheForm').submit();", class: 'btn btn-danger', title: 'Destroy records', confirm: 'Sure?'
+		ret = raw link_to ico('trash-o'), "#", onclick: "$('#DestroyConfirmation').val('destroy'); $('#TheForm').submit();", class: 'btn btn-danger', title: 'Destroy records', confirm: 'Sure?'
 		ret << raw('<input id="DestroyConfirmation" type="hidden" name="destroy" />')
 		ret
 	end
