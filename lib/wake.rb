@@ -125,6 +125,7 @@ module Wake
     
     def new
       @item ||= _model.new
+
 #      params[_model_sym].each{ |k,v| @item.send "#{k}=", v} if params[_model_sym]
       @item.attributes = params[_model_sym] if params[_model_sym]
       @item.attributes = wake_constraints if wake_constraints
@@ -339,7 +340,8 @@ module Wake
               value = vsat.gsub(/([><=].*) (.*)/, '\2')
               @items = @items.where "#{ksat} #{operator} ?", value
             else
-              @items = @items.where "#{ksat} LIKE ?", vsat
+              at = @items.arel_table
+              @items = @items.where at[ksat.to_sym].matches(vsat)
               #raise "#{ksat} LIKE ? --#{vsat}--"
             end
           end

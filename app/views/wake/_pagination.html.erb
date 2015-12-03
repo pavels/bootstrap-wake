@@ -1,58 +1,48 @@
 
 <nav style="text-align: center;">
-	<% if @items.total_pages <= 1 %>
-		<small class="text-muted">page <b>1</b> of <b>1</b></small>
+	<% if @items.current_page == 1 %>
+		<span class="text-muted fa fa-fast-backward"></span>
+		&nbsp;
+		<span class="text-muted fa fa-backward"></span>
 	<% else %>
+		<%= link_to raw('<span class="fa fa-fast-backward"></span>'), params.merge(wake: @wake_params.merge({page: 1})) %>
+		&nbsp;
+		<%= link_to raw('<span class="fa fa-backward"></span>'), params.merge(wake: @wake_params.merge({page: @items.current_page.to_i-1})) %>
+	<% end %>
 
-		<% if @items.current_page == 1 %>
-			<span class="text-muted fa fa-fast-backward"></span>
-			&nbsp;
-			<span class="text-muted fa fa-backward"></span>
-		<% else %>
-			<%= link_to raw('<span class="fa fa-fast-backward"></span>'), params.merge(wake: @wake_params.merge({page: 1})) %>
-			&nbsp;
-			<%= link_to raw('<span class="fa fa-backward"></span>'), params.merge(wake: @wake_params.merge({page: @items.current_page.to_i-1})) %>
-		<% end %>
+	&nbsp;&nbsp;
 
-		&nbsp;&nbsp;
-
-		<%#= form_tag generic_path(@ident, @model), method: :get, style: 'display: inline;' do %>
-
-			<%#=raw hash_as_hidden_fields wake: @wake_params %>
-
-			<%= text_field_tag 'wake[page]', @items.current_page, class: 'form-control input-xsm paginationPage', 
-				style: 'display: inline; width: 3em; font-size: 1em; font-weight: bold; text-align: center; position: relative; top: -1px;' %>
+	<%= text_field_tag 'wake[page]', @items.current_page, class: 'form-control input-xsm paginationPage', 
+		style: 'display: inline; width: 3em; font-size: 1em; font-weight: bold; text-align: center; position: relative; top: -1px;' %>
 
 
-			<small>/</small> <b><%= @items.total_pages %></b> &nbsp; <small class="text-muted">per</small>
+	<small>/</small> <b><%= @items.total_pages %></b> &nbsp; <small class="text-muted">per</small>
 
-			<%= text_field_tag 'wake[per]', (@wake_params[:per]||Wake::Defaults::PER_PAGE), class: 'form-control input-xsm paginationPer', 
-				style: 'display: inline; width: 3em; font-size: 1em; font-weight: bold; text-align: center; position: relative; top: -1px;' %>
+	<%= text_field_tag 'wake[per]', (@wake_params[:per]||Wake::Defaults::PER_PAGE), class: 'form-control input-xsm paginationPer', 
+		style: 'display: inline; width: 6em; font-size: 1em; font-weight: bold; text-align: center; position: relative; top: -1px;' %>
 
-			&nbsp;
-			<small class="text-muted">of</small>
-			&nbsp;
+	&nbsp;
+	<small class="text-muted">of</small>
+	&nbsp;
 
-			<b><%= @items.total_count %></b>
-			&nbsp;
+	<b><%= @items.total_count %></b>
+	&nbsp;
 
-		<%# end %>
 
-		&nbsp;&nbsp;
+	&nbsp;&nbsp;
 
-		<%= link_to raw('<span class="fa fa-list"></span>'), params.merge(wake: @wake_params.merge({page: nil, per: 1000})), title: 'Set per_page = 1000' %>
+	<%= link_to raw('<span class="fa fa-list"></span>'), params.merge(wake: @wake_params.merge({page: nil, per: 1000})), title: 'Set per_page = 1000' %>
 
-		&nbsp;&nbsp;
+	&nbsp;&nbsp;
 
-		<% if @items.current_page == @items.total_pages %>
-			<span class="text-muted fa fa-forward"></span>
-			&nbsp;
-			<span class="text-muted fa fa-fast-forward"></span>
-		<% else %>
-			<%= link_to raw('<span class="fa fa-forward"></span>'), params.merge(wake: @wake_params.merge({page: @items.current_page.to_i+1})) %>
-			&nbsp;
-			<%= link_to raw('<span class="fa fa-fast-forward"></span>'), params.merge(wake: @wake_params.merge({page: @items.total_pages})) %>
-		<% end %>
+	<% if @items.current_page == @items.total_pages %>
+		<span class="text-muted fa fa-forward"></span>
+		&nbsp;
+		<span class="text-muted fa fa-fast-forward"></span>
+	<% else %>
+		<%= link_to raw('<span class="fa fa-forward"></span>'), params.merge(wake: @wake_params.merge({page: @items.current_page.to_i+1})) %>
+		&nbsp;
+		<%= link_to raw('<span class="fa fa-fast-forward"></span>'), params.merge(wake: @wake_params.merge({page: @items.total_pages})) %>
 	<% end %>
 </nav>
 

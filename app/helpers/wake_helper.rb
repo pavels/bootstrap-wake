@@ -4,6 +4,11 @@ module WakeHelper
 		raw "<span class=\"fa fa-#{html_class}\"></span>"
 	end
 
+	def ico_with_loading(html_class)
+		raw "<span class=\"fa fa-#{html_class}\"></span><div class=\"micro-loading\"></div>"
+	end
+
+
 	def wake_sort_params(col_name)
 		if @wake_params[:order] == "#{col_name} ASC"
 			@wake_params.merge :order=>"#{col_name} DESC"
@@ -67,7 +72,7 @@ module WakeHelper
 	end
 
 	def wake_list_destroy_multiple_submit
-		ret = raw link_to ico('trash-o'), "#", onclick: "$('#DestroyConfirmation').val('destroy'); $('#TheForm').submit();", class: 'btn btn-danger', title: 'Destroy records', confirm: 'Sure?'
+		ret = raw link_to ico('trash-o'), "#", onclick: "$('#DestroyConfirmation').val('destroy'); $('#TheForm').submit();", class: 'btn btn-danger disabled btn-destroy', title: 'Destroy records', confirm: 'Sure?'
 		ret << raw('<input id="DestroyConfirmation" type="hidden" name="destroy" />')
 		ret
 	end
